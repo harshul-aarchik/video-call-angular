@@ -1,0 +1,61 @@
+<div class="header">
+  <nav>
+    <img src="https://i.postimg.cc/Sx0ZGtQJ/logo.png" class="logo">
+  </nav>
+  <div class="container">
+    <div class="top-icons">
+      <img src="https://i.postimg.cc/cCpcXrSV/search.png">
+      <img src="https://i.postimg.cc/Pqy2TXWw/menu.png">
+    </div>
+    <div class="row">
+      <div class="col-1">
+
+        <video class="host-img" #local_video [autoplay]="true" [muted]="true"></video>
+        <div class="contarols">
+          <button class="b-background" color="primary" *ngIf="localVideoActive" (click)="pauseLocalVideo()"
+            [disabled]="!localVideoActive">
+            <img class="camera-icon" src="https://i.postimg.cc/02N3Vy9D/pngwing-com-3.png">
+          </button>
+
+          <button class="b-background" color="primary" *ngIf="!localVideoActive" (click)="startLocalVideo()"
+            [disabled]="localVideoActive">
+            <img class="camera-icon" src="https://i.postimg.cc/q7Bjvmgn/pngwing-com-4.png">
+          </button>
+
+          <button class="b-background" (click)="hangUp()" [disabled]="!inCall">
+            <img src="https://i.postimg.cc/fyJH8G00/call.png" class="call-icon">
+          </button>
+
+          <button class="b-background" color="primary" (click)="call()" [disabled]="inCall || !localVideoActive">
+            <img src="https://i.postimg.cc/J04pSxSr/pngwing-com.png" class="call-icon">
+          </button>
+
+          <img class="camera-icon" src="https://i.postimg.cc/xdRjKd0h/pngwing-com-5.png">
+
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="joined">
+          <p>People Joined</p>
+          <div>
+            <video class="img" #received_video [autoplay]="true"></video>
+
+          </div>
+        </div>
+        <div class="invite">
+          <p>Recorded Video</p>
+          <div>
+            <video class="img" fireVideo controls="true" controls #recordedVideo></video>
+            <button>
+             
+            </button>
+            <button class="btn btn-primary btn-lg" *ngIf="!isRecording" (click)="startRecording()">Start
+              Recording</button>
+            <button class="btn btn-warning btn-lg" *ngIf="isRecording" (click)="stopRecording()">Stop Recording</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
